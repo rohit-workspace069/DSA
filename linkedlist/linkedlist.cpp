@@ -45,7 +45,7 @@ void insertAtTail(node* &head, int val){          // taking head via refrense so
         if(temp->next==0){
             cout<<temp->data;
         }
-        cout<<endl;
+        cout<<"NULL"<<endl;
 
 
         return;
