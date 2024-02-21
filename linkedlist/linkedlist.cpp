@@ -49,6 +49,37 @@ void insertAtTail(node* &head, int val){          // taking head via refrense so
         return;           
     }
 
+    node* revrsell(node* &head){
+
+        node* prevptr=NULL;
+        node* currptr=head;
+        node* nextptr;
+
+        while(currptr!=NULL){
+            nextptr=currptr->next;
+            currptr->next=prevptr;
+
+            prevptr=currptr;
+            currptr=nextptr;
+        }
+
+        return prevptr;
+
+    }
+
+    node* reverseRecursivell(node* &head){
+
+        if(head==NULL || head->next==NULL){
+            return head;
+        }
+
+        node* newHead=reverseRecursivell(head->next);
+        head->next->next=head;
+        head->next=NULL;
+
+        return newHead;
+    }
+
     void display(node* head){         //taking head by value cause we don't want to cahnge anything
         node* temp=head;
 
@@ -88,15 +119,16 @@ int main() {
     insertAtTail(head,2);
     insertAtTail(head,3);
     display(head);
-    insertAtTail(head,4);
-    insertAtHead(head,7);
-    insertAtHead(head,8);
-    display(head);
-    cout<<search(head,4)<<endl;
-    cout<<search(head,9)<<endl;
-     insertAtTail(head,9);
-     cout<<search(head,9)<<endl;
-     display(head);
+    // insertAtTail(head,4);
+    // insertAtHead(head,7);
+    // insertAtHead(head,8);
+    // display(head);
+    // cout<<search(head,4)<<endl;
+    // cout<<search(head,9)<<endl;
+    //  insertAtTail(head,9);
+    //  cout<<search(head,9)<<endl;
+    node* newhead = reverseRecursivell(head);
+     display(newhead);
     
     return 0;
 }
