@@ -49,6 +49,34 @@ void insertAtTail(node* &head, int val){          // taking head via refrense so
         return;           
     }
 
+    node* revrsell(node* &head){
+
+        node* prevptr=NULL;
+        node* currptr=head;
+        node* nextptr;
+
+        while(currptr!=NULL){
+            nextptr=currptr->next;
+            currptr->next=prevptr;
+
+            prevptr=currptr;
+            currptr=nextptr;
+
+
+            // prev=curr;
+            // curr=next;
+            // next=next->next;
+        }
+
+        // if(next==NULL){
+        //     next=prev;
+        //     prev=curr;
+        // }
+
+        return prevptr;
+
+    }
+
     void display(node* head){         //taking head by value cause we don't want to cahnge anything
         node* temp=head;
 
@@ -88,15 +116,16 @@ int main() {
     insertAtTail(head,2);
     insertAtTail(head,3);
     display(head);
-    insertAtTail(head,4);
-    insertAtHead(head,7);
-    insertAtHead(head,8);
-    display(head);
-    cout<<search(head,4)<<endl;
-    cout<<search(head,9)<<endl;
-     insertAtTail(head,9);
-     cout<<search(head,9)<<endl;
-     display(head);
+    // insertAtTail(head,4);
+    // insertAtHead(head,7);
+    // insertAtHead(head,8);
+    // display(head);
+    // cout<<search(head,4)<<endl;
+    // cout<<search(head,9)<<endl;
+    //  insertAtTail(head,9);
+    //  cout<<search(head,9)<<endl;
+    node* newhead = revrsell(head);
+     display(newhead);
     
     return 0;
 }
